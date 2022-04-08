@@ -1,0 +1,59 @@
+CREATE DATABASE Student
+USE Student
+
+CREATE TABLE student(
+ID int,
+Name varchar(255),
+Surname varchar(255)
+)
+
+DROP TABLE student
+
+CREATE TABLE student(
+ID int
+)
+
+ALTER TABLE student
+add Name varchar(255)
+
+ALTER TABLE student
+add Surname varchar(255)
+
+ALTER TABLE student
+add Point int
+
+insert into Student
+Values(1, 'Tural', 'Quluzade', 80)
+
+select * from Student
+
+insert into Student
+Values(2, 'Hesen', 'Alizade', 90), (3, 'Gulben', 'Hesenzade', 70)
+
+select * from Student
+where Point > 50 
+
+insert into Student
+Values(4, 'Mehemmed', 'Resulov', 45), (5, 'Tural', 'Mehdiyev', 33)
+
+UPDATE Student
+set Name = 'Lale'
+where ID = 2
+
+select * from Student
+
+UPDATE Student
+set Point = 45
+where ID = 1
+
+select * from Student
+
+alter table Student
+drop 4, 'Mehemmed', 'Resulov', 45
+
+DELETE FROM student WHERE Name = 'Mehemmed'
+
+EXEC sp_rename 'Student.Surname', Lastname
+
+
+
