@@ -1,0 +1,84 @@
+create database Movies
+use Movies
+
+create table Movies(
+ID int primary key identity,
+Name nvarchar(255),
+ReleaseDate int,
+PicturesCount int,
+Duration int,
+)
+
+insert into Movies
+Values('The Dark Knight', 2008, 4, 156, 7), 
+	  ('Stranger Things', 2017, 12, 566, 9), 
+	  ('The Godfather', 2011, 6, 127, 4), 
+	  ('Joker', 2019, 8, 132, 8), 
+	  ('Inception', 2017, 12, 142, 6) 
+	  
+select * from Movies
+
+create database Genres
+use Genres
+
+create table Genres(
+ID int primary key identity,
+Genre nvarchar(255),
+)
+
+insert into Genres
+Values('Drama'),
+	  ('Action'),
+	  ('Horror'),
+	  ('Comedy'), 
+	  ('Crime'), 
+	  ('Historical')
+
+select * from Genres
+
+create database Actors
+use Actors
+
+create table Actors(
+ID int primary key identity,
+Name nvarchar(50),
+Surname nvarchar(50),
+Age int
+)
+
+insert into Actors
+Values('Tom', 'Hanks', 54),
+	  ('Will', 'Smith', 46),
+	  ('Johnny', 'Depp', 55),
+	  ('Dwayne', 'Jhonson', 48),
+	  ('Chris', 'Evans', 38)
+
+select * from Actors
+
+create database Directors
+use Directors
+
+create table Directors(
+ID int primary key identity,
+Name nvarchar(50),
+Surname nvarchar(50),
+Age int,
+Bookscount int
+)
+
+insert into Directors
+Values('Steven', 'Spielberg', 55, 12),
+	  ('Martin', 'Scorsese ', 67, 22),
+	  ('Alfred', 'Hitchcock', 47, 8),
+	  ('James', 'Cameron', 61, 15),
+	  ('Spike', 'Lee', 58, 14)
+
+select * from Directors
+
+create database MoviesGenres
+use MoviesGenres
+
+create table MoviesGenres(
+MoviesID int foreign key references Movies (ID),
+GenresID int foreign key references Genres (ID)
+)
