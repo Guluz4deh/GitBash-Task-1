@@ -1,0 +1,60 @@
+create database ProductSell
+use ProductSell
+
+create table Category(
+ID int primary key identity,
+Name nvarchar(255)
+)
+
+insert into Category
+Values('Phone'), ('Headphone'), ('Notebook'), ('Numbers')
+
+create table Product(
+ID int primary key identity,
+Brand nvarchar(255),
+CostPrice int,
+SellPrice int,
+Battery int,
+CategoryID int foreign key references Category (ID)
+)
+
+insert into Product
+Values('Iphone', 1500, 1950, 2000 , 1),
+	  ('Razer', 1200, 1450, 1500 , 2),
+	  ('Sony', 890, 950, 4200 , 3),
+	  ('Samsung', 1100, 1370, 3500 , 1),
+	  ('Iphone-airpods', 460, 650, 3200 , 2),
+	  ('Hitech', 1900, 2250, 5600 , 2),
+	  ('Xiaomi-airdots', 110, 190, 3300 , 2),
+	  ('Panasonic-rb212', 220, 350, 4100 , 2),
+	  ('Redragon', 400, 540, 3600 , 3),
+	  ('LG1992', 270, 450, 600 , 2),
+	  ('Samsung-headphone', 330, 410, 300 , 2),
+	  ('HP', 1600, 1850, 7300 , 3),
+	  ('Bakcell', 100, 150, 0 , 4)
+
+select * from Product
+
+
+create table Cart(
+ID int primary key identity,
+ProductID int foreign key references Product (ID)
+)
+
+insert into Cart
+Values(1), (5), (6), (11)
+
+select * from Cart
+
+
+select p.CategoryID as [Category Name],
+	   p.ID as [Product Id],
+	   p.Brand as [Product Brand],
+	   p.CostPrice as [Product CostPrice],
+	   p.SellPrice as [Product SellPrice],
+	   p.Battery as [Product Battery]
+	   from Cart c
+
+
+join Product p on p.CategoryID = Category.ID
+join Cart on c.ProductID = p.ID
